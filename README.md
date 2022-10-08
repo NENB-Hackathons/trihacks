@@ -1,2 +1,2 @@
-# trihacks
+# Trihacks
 
