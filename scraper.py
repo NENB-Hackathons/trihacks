@@ -2,8 +2,6 @@
 
 import requests
 
-import src.fedex.fedex_api as fedex_api
-
 # Fedex API - refer to https://developer.fedex.com/api/en-us/catalog/rate/v1/docs.html
 fexEx_url = "https://apis-sandbox.fedex.com/rate/v1/rates/quotes"
 
@@ -18,30 +16,4 @@ response = requests.post(fexEx_url, data=fedEx_payload, headers=headers)
 
 print(response.text)
 
-# UPS API - refer to https://www.ups.com/upsdeveloperkit?loc=en_US
-ups_url = "blank for now"
 
-ups_payload = input # 'input' refers to JSON Payload
-headers = {
-    'Content-Type': "application/json",
-    'X-locale': "en_US",
-    'Authorization': "Bearer "
-    }
-
-response = requests.post(ups_url, data=ups_payload, headers=headers)
-
-print(response.text)
-
-# DHL API - refer to (Blank For Now)
-DHL_url = "also blank for now"
-
-DHL_payload = input # 'input' refers to JSON Payload
-headers = {
-    'Content-Type': "application/json",
-    'X-locale': "en_US",
-    'Authorization': "Bearer "
-    }
-
-response = requests.post(DHL_url, data=ups_payload, headers=headers)
-
-print(response.text)
