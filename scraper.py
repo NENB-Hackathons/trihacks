@@ -2,6 +2,8 @@
 
 import requests
 
+import src.fedex.fedex_api as fedex_api
+
 # Fedex API - refer to https://developer.fedex.com/api/en-us/catalog/rate/v1/docs.html
 fexEx_url = "https://apis-sandbox.fedex.com/rate/v1/rates/quotes"
 
