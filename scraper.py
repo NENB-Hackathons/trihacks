@@ -29,3 +29,17 @@ headers = {
 response = requests.post(ups_url, data=ups_payload, headers=headers)
 
 print(response.text)
+
+# DHL API - refer to (Blank For Now)
+DHL_url = "also blank for now"
+
+DHL_payload = input # 'input' refers to JSON Payload
+headers = {
+    'Content-Type': "application/json",
+    'X-locale': "en_US",
+    'Authorization': "Bearer "
+    }
+
+response = requests.post(DHL_url, data=ups_payload, headers=headers)
+
+print(response.text)
