@@ -1,6 +1,6 @@
 # ZipShip
 
-ZipShip was built in 46 hours for TriHacks. Our idea was to make a bot that tracks what the best shipping companies are. It's the fastest way to find the best shipping deals globaly. Using a python package, shippo, we are able to find three deals that might interest you for shipping. These three deals include fastest shipping, most balanced offer, and cheapest option. 
+ZipShip was built in 46 hours for TriHacks. Our idea was to make a discord bot that tracks what the best shipping companies are. It's the fastest way to find the best shipping deals globaly. Using a python package, shippo, we are able to find three deals that might interest you for shipping. These three deals include fastest shipping, most balanced offer, and cheapest option. 
 
 The theme of TriHacks this year was "supply chain". Our team is comprized of Alvarito050506, Bigjango, Encoded, Nobody6502, and Nooz. 
 
