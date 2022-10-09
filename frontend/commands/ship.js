@@ -84,16 +84,6 @@ module.exports = {
                 interaction.editReply({ content: 'You took too long to respond. Please try again.', ephemeral: false });
             });
 
-        // ask for destination address line 2
-        await interaction.followUp({ content: 'What is the destination address line 2?', ephemeral: false });
-
-        // wait for response
-        const destinationAddressLine2 = await interaction.channel.awaitMessages({ filter: m => m.author.id === interaction.user.id, max: 1, time: 60000, errors: ['time'] })
-            .then(collected => collected.first().content)
-            .catch(() => {
-                interaction.editReply({ content: 'You took too long to respond. Please try again.', ephemeral: false });
-            });
-
         // ask for destination address city
         await interaction.followUp({ content: 'What is the destination address city?', ephemeral: false });
 
@@ -146,7 +136,7 @@ module.exports = {
 
         // ask for length
 
-        await interaction.followUp({ content: 'What is the length? ', ephemeral: false });
+        await interaction.followUp({ content: 'What is the length (in)? ', ephemeral: false });
 
         // wait for response
         const length = await interaction.channel.awaitMessages({ filter: m => m.author.id === interaction.user.id, max: 1, time: 60000, errors: ['time'] })
