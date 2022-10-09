@@ -7,7 +7,7 @@ Hic Svint Dracones.
 
 // Require the necessary discord.js classes
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
-const { bot_token, dexel_version } = require('../config.json');
+const { bot_token, dexel_version } = require('./config.json');
 
 // Require other stuff hehe
 const fs = require('node:fs');
@@ -58,7 +58,6 @@ client.on('interactionCreate', async interaction => {
 		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 	}
 });
-
 
 // Login to Discord with your client's token
 client.login(bot_token);
