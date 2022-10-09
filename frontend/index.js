@@ -18,7 +18,10 @@ const chalk = require('chalk')
 console.log(chalk.blue.bold('[BOT/init] ') + 'BOT started. Version %s', bot_version)
 
 // Create a new client instance
-const client = new Client({ intents: GatewayIntentBits.Guilds, });
+const client = new Client({ intents: [
+	GatewayIntentBits.Guilds,	// Guilds
+	GatewayIntentBits.GuildMessages,	// Guild Messages
+	] });
 console.log(chalk.blue.bold('[BOT/init] ') + 'Client instance created.')
 
 client.commands = new Collection();
@@ -55,20 +58,7 @@ client.on('interactionCreate', async interaction => {
 		await command.execute(interaction);
 	} catch (error) {
 		console.error(error);
-		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
-	}
-});
-
-client.on('interactionCreate', async interaction => {
-	if (!interaction.isModalSubmit()) return;
-	if (interaction.customId === 'parcel') {
-		await interaction.reply({ content: 'Please run `/origin` to setup your origin address!' });
-	}
-	if (interaction.customId === 'origin') {
-		await interaction.reply({ content: 'Please run `/dest` to set your destination address!' });
-	}
-	if (interaction.customId === 'dest') {
-		await interaction.reply({ content: 'Completed! The bot is thinking...' });
+		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: false });
 	}
 });
 
