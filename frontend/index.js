@@ -7,7 +7,7 @@ Hic Svint Dracones.
 
 // Require the necessary discord.js classes
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
-const { token, dexel_version } = require('./config.json');
+const { bot_token, dexel_version } = require('../config.json');
 
 // Require other stuff hehe
 const fs = require('node:fs');
@@ -34,12 +34,9 @@ for (const file of commandFiles) {
 }
 console.log(chalk.blue.bold('[BOT/init] ') + 'Commands loaded.')
 
-const Database = require('./utils/models')
-
 // When the client is ready, run this code (only once)
 client.once('ready', () => {
 	// should have a function to sync all tables but eh
-	Database.Games.sync()
 	console.log(chalk.green.bold('[BOT/Main] ') + 'Bot is now running. Press CTRL-C to exit.')
 });
 
@@ -64,4 +61,4 @@ client.on('interactionCreate', async interaction => {
 
 
 // Login to Discord with your client's token
-client.login(token);
+client.login(bot_token);
