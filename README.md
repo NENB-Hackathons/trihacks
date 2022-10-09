@@ -22,3 +22,12 @@ yarn
 yarn run deploy-commands
 yarn run start
 ```
+## Backend
+
+To run the backend first ensure the config.json contains your shippo api key
+
+Then install dependencies and start the flask server:
+```
+pip install -r requirements.txt
+python backend.py
+```
