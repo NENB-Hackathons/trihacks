@@ -3,51 +3,26 @@
 import requests
 import shippo
 
-# Shippo package shit
-shippo.config.api_key = "shippo_live_26fc778339e6558af32efa7efc3eb36ac2d6615e"
+def get_rates(api_key: str, address_from: dict, address_to: dict, parcel: dict) -> list[shippo.resource.ShippoObject]:
+    """
+    api_key should be a shippo API key.
+    address_from and address_to should be as documented here: https://goshippo.com/docs/reference#addresses
+    parcel should be as documented here: https://goshippo.com/docs/reference#parcels
+    """
 
-# Example address_from object dict
-# The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses
-address_from = {
-    "street1": "115 Palis Way",
-    "city": "Calgary",
-    "state": "AB",
-    "zip": "T2V 3V5",
-    "country": "CA",
-}
+    # Shippo package key
+    shippo.config.api_key = api_key
 
-# Example address_to object dict
-# The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses
+    # Setup shioment var
+    shipment = shippo.Shipment.create(
+        address_from=address_from,
+        address_to=address_to,
+        parcels=[parcel],
+        asynchronous=False
+    )
 
-address_to = {
-    "street1": "9632 Oakfield Dr SW",
-    "city": "Calgary",
-    "state": "AB",
-    "zip": "T2V 0L1",
-    "country": "CA",
-}
+    # Rates are stored in the `rates` array
+    # The details on the returned object are here: https://goshippo.com/docs/reference#rates
+    rates = shipment.rates
 
-# parcel object dict
-# The complete reference for parcel object is here: https://goshippo.com/docs/reference#parcels
-parcel = {
-    "length": "5",
-    "width": "5",
-    "height": "5",
-    "distance_unit": "in",
-    "weight": "2",
-    "mass_unit": "lb",
-}
-
-# Setup shioment var
-shipment = shippo.Shipment.create(
-    address_from=address_from,
-    address_to=address_to,
-    parcels=[parcel],
-    asynchronous=False
-)
-
-# Rates are stored in the `rates` array
-# The details on the returned object are here: https://goshippo.com/docs/reference#rates
-rates = shipment.rates
-
-print(rates)
+    return rates
