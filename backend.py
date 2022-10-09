@@ -1,7 +1,9 @@
-# Take `destination`, `origin` and `parcel size` as an argument and scrape websites for shipping times and prices
+# Take `destination`, `origin` and `parcel size` as an argument and use shippo API to get rates
+# Expose this via flask to the frontend
 
 import requests
 import shippo
+from flask import Flask, request, jsonify
 
 def get_rates(api_key: str, address_from: dict, address_to: dict, parcel: dict) -> list[shippo.resource.ShippoObject]:
     """
@@ -26,3 +28,17 @@ def get_rates(api_key: str, address_from: dict, address_to: dict, parcel: dict) 
     rates = shipment.rates
 
     return rates
+
+app = Flask(__name__)
+
+@app.route('/rates', methods=['POST'])
+
+def rates():
+    # Get data from request
+    data = request.get_json()
+
+    # Get rates
+    rates = get_rates(data['api_key'], data['address_from'], data['address_to'], data['parcel'])
+
+    # Return rates
+    return jsonify(rates)
