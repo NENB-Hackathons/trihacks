@@ -5,39 +5,85 @@ const { bot_version } = require('../config.json');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('rate')
-		.setDescription('Version Info for your bot'),
+		.setDescription('Calculate shipping price for package, sorted by cheapest to most expensive'),
 	async execute(interaction) {
-        await interaction.showModal(modal);
+        await interaction.showModal(parcel);
 	},
 };
 
-// Create the modal
-const modal = new ModalBuilder()
-	.setCustomId('rateprompt')
-	.setTitle('Calculate Parcel Rates');
-// Add components to modal
-// Create the text input components
-const parcel = new TextInputBuilder()
+client.on('interactionCreate', interaction => {
+	if (!interaction.isModalSubmit()) return;
+
+	// Get the data entered by the user
+	const lengthresult = interaction.fields.getTextInputValue('length');
+	const widthresult = interaction.fields.getTextInputValue('width');
+	console.log({ lengthresult, widthresult });
+});
+
+// Parcel Info
+const parcel = new ModalBuilder()
 	.setCustomId('parcel')
-    // The label is the prompt the user sees for this input
-	.setLabel("What's your favorite color?")
-    // Short means only a single line of text
-	.setStyle(TextInputStyle.Short);
-    .setRequired(true);
-const address_from = new TextInputBuilder()
-	.setCustomId('hobbiesInput')
-	.setLabel("What's some of your favorite hobbies?")
-    // Paragraph means multiple lines of text.
-	.setStyle(TextInputStyle.Paragraph);
-const address_to = new TextInputBuilder()
-	.setCustomId('hobbiesInput')
-	.setLabel("What's some of your favorite hobbies?")
-    // Paragraph means multiple lines of text.
-	.setStyle(TextInputStyle.Paragraph);
-// An action row only holds one text input,
-// so you need one action row per text input.
-const firstActionRow = new ActionRowBuilder().addComponents(favoriteColorInput);
-const secondActionRow = new ActionRowBuilder().addComponents(hobbiesInput);
-// Add inputs to the modal
-modal.addComponents(firstActionRow, secondActionRow);
-// Show the modal to the user
+	.setTitle('Parcel Info 1/3');
+
+const length = new TextInputBuilder()
+	.setCustomId('length')
+	.setLabel("Parcel Length (CM)")
+	.setStyle(TextInputStyle.Short)
+    .setRequired(true)
+const width = new TextInputBuilder()
+	.setCustomId('width')
+	.setLabel("Parcel Width (CM)")
+	.setStyle(TextInputStyle.Short)
+    .setRequired(true)
+const height = new TextInputBuilder()
+	.setCustomId('height')
+	.setLabel("Parcel Height (CM)")
+	.setStyle(TextInputStyle.Short)
+    .setRequired(true)
+const weight = new TextInputBuilder()
+	.setCustomId('weight')
+	.setLabel("Parcel Weight (KG)")
+	.setStyle(TextInputStyle.Short)
+    .setRequired(true)
+
+const firstActionRow = new ActionRowBuilder().addComponents(length);
+const secondActionRow = new ActionRowBuilder().addComponents(width);
+const thirdActionRow = new ActionRowBuilder().addComponents(height);
+const fourthActionRow = new ActionRowBuilder().addComponents(weight);
+const actionRows = [firstActionRow, secondActionRow, thirdActionRow, fourthActionRow];
+parcel.addComponents(actionRows);
+
+//// Origin Info
+//const origin = new ModalBuilder()
+//	.setCustomId('origin')
+//	.setTitle('Origin Info 2/3');
+//
+//const length = new TextInputBuilder()
+//	.setCustomId('length')
+//	.setLabel("Parcel Length")
+//	.setStyle(TextInputStyle.Short)
+//    .setRequired(true)
+//const width = new TextInputBuilder()
+//	.setCustomId('width')
+//	.setLabel("Parcel Width")
+//	.setStyle(TextInputStyle.Short)
+//    .setRequired(true)
+//const height = new TextInputBuilder()
+//	.setCustomId('height')
+//	.setLabel("Parcel Height")
+//	.setStyle(TextInputStyle.Short)
+//    .setRequired(true)
+//const weight = new TextInputBuilder()
+//	.setCustomId('weight')
+//	.setLabel("Parcel Weight (LB)")
+//	.setStyle(TextInputStyle.Short)
+//    .setRequired(true)
+//
+//const firstActionRow = new ActionRowBuilder().addComponents(length);
+//const secondActionRow = new ActionRowBuilder().addComponents(width);
+//const thirdActionRow = new ActionRowBuilder().addComponents(height);
+//const fourthActionRow = new ActionRowBuilder().addComponents(weight);
+//const actionRows = [firstActionRow, secondActionRow, thirdActionRow, fourthActionRow];
+//parcel.addComponents(actionRows);
+//
+//// Destination Info
