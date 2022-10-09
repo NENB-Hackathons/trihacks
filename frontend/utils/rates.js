@@ -1,5 +1,5 @@
 const axios = require('axios').default;
-const api_key = require('./config.json').shippo_api_key;
+const api_key = require('../config.json').shippo_api_key;
 
 async function get_rates() {
     response = await axios.post('https://localhost:5000/rates', {
