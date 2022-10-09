@@ -6,6 +6,9 @@
 
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { EmbedBuilder } = require('@discordjs/builders');
+const chalk = require('chalk')
+const api_key = require('../config.json').shippo_api_key;
+const axios = require('axios').default;
 
 const { get_rates } = require('../utils/rates.js');
 
@@ -15,23 +18,13 @@ module.exports = {
         .setDescription('Ship a parcel from one address to another'),
     async execute(interaction) {
         // ask for origin address line 1
-        await interaction.reply({ content: 'What is the origin address line 1?', ephemeral: false });
+        await interaction.reply({ content: 'What is the origin address?', ephemeral: false });
 
         // wait for response
         const originAddressLine1 = await interaction.channel.awaitMessages({ filter: m => m.author.id === interaction.user.id, max: 1, time: 60000, errors: ['time'] })
             .then(collected => collected.first().content)
             .catch(() => {
-                interaction.editReply({ content: 'You took too long to respond. Please try again.', ephemeral: false });
-            });
-
-        // ask for origin address line 2
-        await interaction.followUp({ content: 'What is the origin address line 2?', ephemeral: false });
-
-        // wait for response
-        const originAddressLine2 = await interaction.channel.awaitMessages({ filter: m => m.author.id === interaction.user.id, max: 1, time: 60000, errors: ['time'] })
-            .then(collected => collected.first().content)
-            .catch(() => {
-                interaction.editReply({ content: 'You took too long to respond. Please try again.', ephemeral: false });
+                interaction.followUP({ content: 'You took too long to respond. Please try again.', ephemeral: false });
             });
 
         // ask for origin address city
@@ -41,7 +34,7 @@ module.exports = {
         const originAddressCity = await interaction.channel.awaitMessages({ filter: m => m.author.id === interaction.user.id, max: 1, time: 60000, errors: ['time'] })
             .then(collected => collected.first().content)
             .catch(() => {
-                interaction.editReply({ content: 'You took too long to respond. Please try again.', ephemeral: false });
+                interaction.followUP({ content: 'You took too long to respond. Please try again.', ephemeral: false });
             });
 
         // ask for origin address state
@@ -51,7 +44,7 @@ module.exports = {
         const originAddressState = await interaction.channel.awaitMessages({ filter: m => m.author.id === interaction.user.id, max: 1, time: 60000, errors: ['time'] })
             .then(collected => collected.first().content)
             .catch(() => {
-                interaction.editReply({ content: 'You took too long to respond. Please try again.', ephemeral: false });
+                interaction.followUP({ content: 'You took too long to respond. Please try again.', ephemeral: false });
             });
 
         // ask for origin address country
@@ -61,7 +54,7 @@ module.exports = {
         const originAddressCountry = await interaction.channel.awaitMessages({ filter: m => m.author.id === interaction.user.id, max: 1, time: 60000, errors: ['time'] })
             .then(collected => collected.first().content)
             .catch(() => {
-                interaction.editReply({ content: 'You took too long to respond. Please try again.', ephemeral: false });
+                interaction.followUP({ content: 'You took too long to respond. Please try again.', ephemeral: false });
             });
 
         // ask for origin address zip
@@ -71,11 +64,11 @@ module.exports = {
         const originAddressZip = await interaction.channel.awaitMessages({ filter: m => m.author.id === interaction.user.id, max: 1, time: 60000, errors: ['time'] })
             .then(collected => collected.first().content)
             .catch(() => {
-                interaction.editReply({ content: 'You took too long to respond. Please try again.', ephemeral: false });
+                interaction.followUP({ content: 'You took too long to respond. Please try again.', ephemeral: false });
             });
 
         // ask for destination address line 1
-        await interaction.followUp({ content: 'What is the destination address line 1?', ephemeral: false });
+        await interaction.followUp({ content: 'What is the destination address?', ephemeral: false });
 
         // wait for response
         const destinationAddressLine1 = await interaction.channel.awaitMessages({ filter: m => m.author.id === interaction.user.id, max: 1, time: 60000, errors: ['time'] })
@@ -91,7 +84,7 @@ module.exports = {
         const destinationAddressCity = await interaction.channel.awaitMessages({ filter: m => m.author.id === interaction.user.id, max: 1, time: 60000, errors: ['time'] })
             .then(collected => collected.first().content)
             .catch(() => {
-                interaction.editReply({ content: 'You took too long to respond. Please try again.', ephemeral: false });
+                interaction.followUP({ content: 'You took too long to respond. Please try again.', ephemeral: false });
             });
 
         // ask for destination address state
@@ -101,7 +94,7 @@ module.exports = {
         const destinationAddressState = await interaction.channel.awaitMessages({ filter: m => m.author.id === interaction.user.id, max: 1, time: 60000, errors: ['time'] })
             .then(collected => collected.first().content)
             .catch(() => {
-                interaction.editReply({ content: 'You took too long to respond. Please try again.', ephemeral: false });
+                interaction.followUP({ content: 'You took too long to respond. Please try again.', ephemeral: false });
             });
             
         // ask for destination address country
@@ -111,7 +104,7 @@ module.exports = {
         const destinationAddressCountry = await interaction.channel.awaitMessages({ filter: m => m.author.id === interaction.user.id, max: 1, time: 60000, errors: ['time'] })
             .then(collected => collected.first().content)
             .catch(() => {
-                interaction.editReply({ content: 'You took too long to respond. Please try again.', ephemeral: false });
+                interaction.followUP({ content: 'You took too long to respond. Please try again.', ephemeral: false });
             });
 
         // ask for destination address zip
@@ -121,7 +114,7 @@ module.exports = {
         const destinationAddressZip = await interaction.channel.awaitMessages({ filter: m => m.author.id === interaction.user.id, max: 1, time: 60000, errors: ['time'] })
             .then(collected => collected.first().content)
             .catch(() => {
-                interaction.editReply({ content: 'You took too long to respond. Please try again.', ephemeral: false });
+                interaction.followUP({ content: 'You took too long to respond. Please try again.', ephemeral: false });
             });
 
         // ask for weight
@@ -131,7 +124,7 @@ module.exports = {
         const weight = await interaction.channel.awaitMessages({ filter: m => m.author.id === interaction.user.id, max: 1, time: 60000, errors: ['time'] })
             .then(collected => collected.first().content)
             .catch(() => {
-                interaction.editReply({ content: 'You took too long to respond. Please try again.', ephemeral: false });
+                interaction.followUP({ content: 'You took too long to respond. Please try again.', ephemeral: false });
             });
 
         // ask for length
@@ -142,7 +135,7 @@ module.exports = {
         const length = await interaction.channel.awaitMessages({ filter: m => m.author.id === interaction.user.id, max: 1, time: 60000, errors: ['time'] })
             .then(collected => collected.first().content)
             .catch(() => {
-                interaction.editReply({ content: 'You took too long to respond. Please try again.', ephemeral: false });
+                interaction.followUP({ content: 'You took too long to respond. Please try again.', ephemeral: false });
             });
 
         // ask for width
@@ -152,7 +145,7 @@ module.exports = {
         const width = await interaction.channel.awaitMessages({ filter: m => m.author.id === interaction.user.id, max: 1, time: 60000, errors: ['time'] })
             .then(collected => collected.first().content)
             .catch(() => {
-                interaction.editReply({ content: 'You took too long to respond. Please try again.', ephemeral: false });
+                interaction.followUP({ content: 'You took too long to respond. Please try again.', ephemeral: false });
             });
 
         // ask for height
@@ -162,13 +155,12 @@ module.exports = {
         const height = await interaction.channel.awaitMessages({ filter: m => m.author.id === interaction.user.id, max: 1, time: 60000, errors: ['time'] })
             .then(collected => collected.first().content)
             .catch(() => {
-                interaction.editReply({ content: 'You took too long to respond. Please try again.', ephemeral: false });
+                interaction.followUP({ content: 'You took too long to respond. Please try again.', ephemeral: false });
             });
 
         // combine our address lines into an object that we can pass to the rates function
         const originAddress = {
             "street1": originAddressLine1,
-            "street2": originAddressLine2,
             "city": originAddressCity,
             "state": originAddressState,
             "zip": originAddressZip,
@@ -178,7 +170,6 @@ module.exports = {
         // combine our address lines into an object that we can pass to the rates function
         const destinationAddress = {
             "street1": destinationAddressLine1,
-            "street2": destinationAddressLine2,
             "city": destinationAddressCity,
             "state": destinationAddressState,
             "zip": destinationAddressZip,
@@ -195,22 +186,40 @@ module.exports = {
             "mass_unit": "lb"
         };
 
-        // talk to our api wrapper
-        rates = get_rates(originAddress, destinationAddress, parcel);
-
-        // build our rate embed
-        const rateEmbed = new MessageEmbed()
-            .setColor('#0099ff')
-            .setTitle('Rates')
-            .setDescription('Here are the rates for your shipment.')
-            .addFields(
-                { name: 'USPS', value: rates.usps },
-                { name: 'UPS', value: rates.ups },
-                { name: 'FedEx', value: rates.fedex },
+        // get rates from shippo api using axios
+        const rates = await axios.get('https://api.goshippo.com/v1/rates/', {
+            "address_from": originAddress,
+            "address_to": destinationAddress,
+            "parcels": [parcel],
+            "async": false
+        }, {
+            headers: {
+                'Authorization': `ShippoToken shippo_live_6e8106484d0a3307deedcbc1f47b1149faa91e45`
+            }
+        })
+            .then(response => {
+                return response.data;
+            }
             )
-            .setTimestamp();
+            .catch(error => {
+                console.log(error);
+            }
+            );
 
-        // send our rate embed
-        await interaction.followUp({ embeds: [rateEmbed] });
+        // create a new embed
+        const embed = new MessageEmbed()
+            .setTitle('Shipping Rates')
+            .setColor('RANDOM')
+            .setFooter('Powered by Shippo');
+
+        // loop through the rates and add them to the embed
+        rates.rates.forEach(rate => {
+            embed.addField(rate.provider, rate.amount);
+        }
+
+        );
+
+        // send the embed
+        await interaction.followUp({ embeds: [embed] });
     },
 };
