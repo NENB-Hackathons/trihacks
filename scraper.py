@@ -38,10 +38,7 @@ parcel = {
     "mass_unit": "lb",
 }
 
-# Example shipment object
-# For complete reference to the shipment object: https://goshippo.com/docs/reference#shipments
-# This object has asynchronous=False, indicating that the function will wait until all rates are generated before it returns.
-# By default, Shippo handles responses asynchronously. However this will be depreciated soon. Learn more: https://goshippo.com/docs/async
+# Setup shioment var
 shipment = shippo.Shipment.create(
     address_from=address_from,
     address_to=address_to,
