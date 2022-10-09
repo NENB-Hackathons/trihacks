@@ -79,13 +79,13 @@ const zip = new TextInputBuilder()
     .setRequired(true)
     .setPlaceholder('92704')
 
-const firstActionRow = new ActionRowBuilder().addComponents(street);
-const secondActionRow = new ActionRowBuilder().addComponents(city);
-const thirdActionRow = new ActionRowBuilder().addComponents(state);
-const fourthActionRow = new ActionRowBuilder().addComponents(country);
-const fifthActionRow = new ActionRowBuilder().addComponents(zip);
-const actionRows = [firstActionRow, secondActionRow, thirdActionRow, fourthActionRow, fifthActionRow];
-origin.addComponents(actionRows);
+const origin_firstActionRow = new ActionRowBuilder().addComponents(street);
+const origin_secondActionRow = new ActionRowBuilder().addComponents(city);
+const origin_thirdActionRow = new ActionRowBuilder().addComponents(state);
+const origin_fourthActionRow = new ActionRowBuilder().addComponents(country);
+const origin_fifthActionRow = new ActionRowBuilder().addComponents(zip);
+const origin_actionRows = [origin_firstActionRow, origin_secondActionRow, origin_thirdActionRow, origin_fourthActionRow, origin_fifthActionRow];
+origin.addComponents(origin_actionRows);
 
 // Destination Info
 const dest = new ModalBuilder()
@@ -123,10 +123,10 @@ const destzip = new TextInputBuilder()
     .setRequired(true)
     .setPlaceholder('50983')
 
-const firstActionRow = new ActionRowBuilder().addComponents(deststreet);
-const secondActionRow = new ActionRowBuilder().addComponents(destcity);
-const thirdActionRow = new ActionRowBuilder().addComponents(deststate);
-const fourthActionRow = new ActionRowBuilder().addComponents(destcountry);
-const fifthActionRow = new ActionRowBuilder().addComponents(destzip);
-const actionRows = [firstActionRow, secondActionRow, thirdActionRow, fourthActionRow, fifthActionRow];
-origin.addComponents(actionRows);
+const dest_firstActionRow = new ActionRowBuilder().addComponents(deststreet);
+const dest_secondActionRow = new ActionRowBuilder().addComponents(destcity);
+const dest_thirdActionRow = new ActionRowBuilder().addComponents(deststate);
+const dest_fourthActionRow = new ActionRowBuilder().addComponents(destcountry);
+const dest_fifthActionRow = new ActionRowBuilder().addComponents(destzip);
+const dest_actionRows = [dest_firstActionRow, dest_secondActionRow, dest_thirdActionRow, dest_fourthActionRow, dest_fifthActionRow];
+dest.addComponents(dest_actionRows);
