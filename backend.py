@@ -17,7 +17,7 @@ def get_rates(
     # Shippo package key
     shippo.config.api_key = api_key
 
-    # Setup shioment var
+    # Setup shipment var
     shipment = shippo.Shipment.create(
         address_from=address_from,
         address_to=address_to,

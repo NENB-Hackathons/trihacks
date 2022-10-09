@@ -1,4 +1,5 @@
 const { SlashCommandBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } = require('discord.js');
+const { get_rates } = require('../utils/rates.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -12,7 +13,7 @@ module.exports = {
 // Parcel Info
 const parcel = new ModalBuilder()
 	.setCustomId('parcel')
-	.setTitle('Parcel Info 1/3');
+	.setTitle('Parcel Info');
 
 const length = new TextInputBuilder()
 	.setCustomId('length')

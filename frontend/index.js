@@ -7,7 +7,7 @@ Hic Svint Dracones.
 
 // Require the necessary discord.js classes
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
-const { bot_token, dexel_version } = require('./config.json');
+const { bot_token, bot_version } = require('./config.json');
 
 // Require other stuff hehe
 const fs = require('node:fs');
@@ -15,7 +15,7 @@ const path = require('node:path');
 const chalk = require('chalk')
 
 // initial log
-console.log(chalk.blue.bold('[BOT/init] ') + 'BOT started. Version %s', dexel_version)
+console.log(chalk.blue.bold('[BOT/init] ') + 'BOT started. Version %s', bot_version)
 
 // Create a new client instance
 const client = new Client({ intents: GatewayIntentBits.Guilds, });
@@ -63,7 +63,8 @@ client.on('interactionCreate', async interaction => {
 	if (!interaction.isModalSubmit()) return;
 	if (interaction.customId === 'parcel') {
 		await interaction.reply({ content: 'Your submission was received successfully!' });
-		
+		const lengthresult = interaction.fields.getTextInputValue('length');
+		const widthresult = interaction.fields.getTextInputValue('width');
 	}
 });
 
