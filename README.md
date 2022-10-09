@@ -1,9 +1,11 @@
-# Trihacks
+# ZipShip
 
-Trihacks, a 46 hour hacathon where we build a webside, app or bot to help with supply chain. Our team is comprized of Alvarito050506, Bigjango, Encoded, Nobody6502, and Nooz. Our idea is to make a bot that tracks what the best shipping companies are. We created Shipping Express, the fastest way to find the best shipping deals globaly. Using a python package, shippo, we are able to find three deals that might interest you for shipping. These three deals include fastest shipping, most balanced offer, and cheapest option. 
+ZipShip was built in 46 hours for TriHacks. Our idea was to make a bot that tracks what the best shipping companies are. It's the fastest way to find the best shipping deals globaly. Using a python package, shippo, we are able to find three deals that might interest you for shipping. These three deals include fastest shipping, most balanced offer, and cheapest option. 
+
+The theme of TriHacks this year was "supply chain". Our team is comprized of Alvarito050506, Bigjango, Encoded, Nobody6502, and Nooz. 
 
 ## Frontend
-To run the bot, first populate `config.json` with your discord bot:
+To run the bot, first populate `./frontend/config.json` with your discord bot:
 
 ```
 {
@@ -22,6 +24,7 @@ yarn
 yarn run deploy-commands
 yarn run start
 ```
+
 ## Backend
 
 To run the backend first ensure the config.json contains your shippo api key
