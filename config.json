@@ -1,8 +1,0 @@
-{
-    "clientId": "1234567890",
-    "guildId": "0987654321",
-    "bot_token": "ee",
-    "shippo_api_key": "shippo_live_something",
-    "bot_version": "1.0.0",
-    "local": true
-}

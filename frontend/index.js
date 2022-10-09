@@ -59,5 +59,12 @@ client.on('interactionCreate', async interaction => {
 	}
 });
 
+client.on('interactionCreate', async interaction => {
+	if (!interaction.isModalSubmit()) return;
+	if (interaction.customId === 'parcel') {
+		await interaction.reply({ content: 'Your submission was received successfully!' });
+	}
+});
+
 // Login to Discord with your client's token
 client.login(bot_token);
