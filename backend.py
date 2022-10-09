@@ -5,7 +5,6 @@ import requests
 import shippo
 from flask import Flask, jsonify, request
 
-
 def get_rates(
     api_key: str, address_from: dict, address_to: dict, parcel: dict
 ) -> list[shippo.resource.ShippoObject]:
