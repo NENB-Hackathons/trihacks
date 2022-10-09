@@ -63,8 +63,6 @@ client.on('interactionCreate', async interaction => {
 	if (!interaction.isModalSubmit()) return;
 	if (interaction.customId === 'parcel') {
 		await interaction.reply({ content: 'Your submission was received successfully!' });
-		const lengthresult = interaction.fields.getTextInputValue('length');
-		const widthresult = interaction.fields.getTextInputValue('width');
 	}
 });
 
