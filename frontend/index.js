@@ -62,7 +62,13 @@ client.on('interactionCreate', async interaction => {
 client.on('interactionCreate', async interaction => {
 	if (!interaction.isModalSubmit()) return;
 	if (interaction.customId === 'parcel') {
-		await interaction.reply({ content: 'Your submission was received successfully!' });
+		await interaction.reply({ content: 'Please run `/origin` to setup your origin address!' });
+	}
+	if (interaction.customId === 'origin') {
+		await interaction.reply({ content: 'Please run `/dest` to set your destination address!' });
+	}
+	if (interaction.customId === 'dest') {
+		await interaction.reply({ content: 'Completed! The bot is thinking...' });
 	}
 });
 
