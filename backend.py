@@ -43,5 +43,11 @@ def rates():
     # Return rates
     return jsonify(rates)
 
+# 404 handling
+@app.errorhandler(404)
+def not_found(e):
+    # Redirect the gh repo
+  return '<meta http-equiv="Refresh" content="0; url=\'https://github.com/NENB-Hackathons/trihacks\'" />'
+
 if __name__ == '__main__':
     app.run("0.0.0.0", 5000)
