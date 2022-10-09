@@ -3,20 +3,6 @@
 import requests
 import shippo
 
-## Fedex API - refer to https://developer.fedex.com/api/en-us/catalog/rate/v1/docs.html
-#fexEx_url = "https://apis-sandbox.fedex.com/rate/v1/rates/quotes"
-#
-#fedEx_payload = input # 'input' refers to JSON Payload
-#headers = {
-#    'Content-Type': "application/json",
-#    'X-locale': "en_US",
-#    'Authorization': "Bearer "
-#    }
-#
-#response = requests.post(fexEx_url, data=fedEx_payload, headers=headers)
-#
-#print(response.text)
-
 # Shippo package shit
 shippo.config.api_key = "shippo_live_26fc778339e6558af32efa7efc3eb36ac2d6615e"
 
