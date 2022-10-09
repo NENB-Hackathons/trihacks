@@ -45,7 +45,7 @@ module.exports = {
             });
 
         // ask for origin address state
-        await interaction.followUp({ content: 'What is the origin address state?', ephemeral: false });
+        await interaction.followUp({ content: 'What is the origin address state/province?', ephemeral: false });
 
         // wait for response
         const originAddressState = await interaction.channel.awaitMessages({ filter: m => m.author.id === interaction.user.id, max: 1, time: 60000, errors: ['time'] })
