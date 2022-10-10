@@ -209,12 +209,13 @@ module.exports = {
         // create our embed with embed builder
         const embed = new EmbedBuilder()
             .setTitle('Shipping Rates')
-            .setDescription('Here are the shipping rates for your shipment.')
+            .setDescription('Here are the shipping rates for your shipment. ')
             .addFields(
-                { name: 'FedEx', value: rates.rates[0].amount, inline: true },
-                { name: 'UPS', value: rates.rates[1].amount, inline: true },
-                { name: 'USPS', value: rates.rates[2].amount, inline: true },
-                { name: 'DHL', value: rates.rates[3].amount, inline: true },
+                { name: 'FedEx', value: '$' + rates.rates[0].amount, inline: true },
+                { name: 'UPS', value: '$' + rates.rates[1].amount, inline: true },
+                { name: 'USPS', value: '$' + rates.rates[2].amount, inline: true },
+                { name: 'DHL', value: '$' + rates.rates[3].amount, inline: true },
+                { name: 'Canada Post', value: '$' + rates.rates[4].amount, inline: true },
             )
             .setTimestamp();
 
