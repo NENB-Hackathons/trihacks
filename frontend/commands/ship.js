@@ -186,8 +186,8 @@ module.exports = {
             "mass_unit": "lb"
         };
 
-        // get rates from shippo api using axios
-        const rates = await axios.get('https://api.goshippo.com/v1/rates/', {
+        // create a new shipment with shippo api
+        const rates = await axios.post('https://api.goshippo.com/shipments', {
             "address_from": originAddress,
             "address_to": destinationAddress,
             "parcels": [parcel],
