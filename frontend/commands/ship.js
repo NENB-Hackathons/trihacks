@@ -194,7 +194,7 @@ module.exports = {
             "async": false
         }, {
             headers: {
-                'Authorization': `ShippoToken shippo_live_6e8106484d0a3307deedcbc1f47b1149faa91e45`
+                'Authorization': `ShippoToken ${api_key}`
             }
         })
             .then(response => {
@@ -217,7 +217,7 @@ module.exports = {
             embed.addField(rate.provider, rate.amount);
         }
 
-        );
+        console.log(rates);
 
         // send the embed
         await interaction.followUp({ embeds: [embed] });
