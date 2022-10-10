@@ -49,7 +49,7 @@ module.exports = {
 
         // ask for origin address country
         await interaction.followUp({ content: 'What is the origin address country?', ephemeral: false });
-        
+
         // wait for response
         const originAddressCountry = await interaction.channel.awaitMessages({ filter: m => m.author.id === interaction.user.id, max: 1, time: 60000, errors: ['time'] })
             .then(collected => collected.first().content)
@@ -96,7 +96,7 @@ module.exports = {
             .catch(() => {
                 interaction.followUP({ content: 'You took too long to respond. Please try again.', ephemeral: false });
             });
-            
+
         // ask for destination address country
         await interaction.followUp({ content: 'What is the destination address country?', ephemeral: false });
 
@@ -150,7 +150,7 @@ module.exports = {
 
         // ask for height
         await interaction.followUp({ content: 'What is the height? (in)', ephemeral: false });
-        
+
         // wait for response
         const height = await interaction.channel.awaitMessages({ filter: m => m.author.id === interaction.user.id, max: 1, time: 60000, errors: ['time'] })
             .then(collected => collected.first().content)

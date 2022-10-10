@@ -21,6 +21,7 @@ console.log(chalk.blue.bold('[BOT/init] ') + 'BOT started. Version %s', bot_vers
 const client = new Client({ intents: [
 	GatewayIntentBits.Guilds,	// Guilds
 	GatewayIntentBits.GuildMessages,	// Guild Messages
+	GatewayIntentBits.MessageContent,   // Fix message bug
 	] });
 console.log(chalk.blue.bold('[BOT/init] ') + 'Client instance created.')
 
