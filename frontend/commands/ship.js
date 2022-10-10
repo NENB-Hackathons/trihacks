@@ -37,7 +37,7 @@ module.exports = {
                 interaction.followUP({ content: 'You took too long to respond. Please try again.', ephemeral: false });
             });
 
-        // ask for origin address state
+        // ask for origin address state/province
         await interaction.followUp({ content: 'What is the origin address state/province?', ephemeral: false });
 
         // wait for response
@@ -87,7 +87,7 @@ module.exports = {
                 interaction.followUP({ content: 'You took too long to respond. Please try again.', ephemeral: false });
             });
 
-        // ask for destination address state
+        // ask for destination address state/province
         await interaction.followUp({ content: 'What is the destination address state/Province?', ephemeral: false });
 
         // wait for response
