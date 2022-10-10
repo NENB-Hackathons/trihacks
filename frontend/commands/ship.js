@@ -214,6 +214,7 @@ module.exports = {
                 { name: 'FedEx', value: rates.rates[0].amount, inline: true },
                 { name: 'UPS', value: rates.rates[1].amount, inline: true },
                 { name: 'USPS', value: rates.rates[2].amount, inline: true },
+                { name: 'DHL', value: rates.rates[3].amount, inline: true },
             )
             .setTimestamp();
 
