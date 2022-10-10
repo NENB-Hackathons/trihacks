@@ -206,20 +206,19 @@ module.exports = {
             }
             );
 
-        // create a new embed
-        const embed = new MessageEmbed()
+        // create our embed with embed builder
+        const embed = new EmbedBuilder()
             .setTitle('Shipping Rates')
-            .setColor('RANDOM')
-            .setFooter('Powered by Shippo');
+            .setDescription('Here are the shipping rates for your shipment.')
+            .addFields(
+                { name: 'FedEx', value: rates.rates[0].amount, inline: true },
+                { name: 'UPS', value: rates.rates[1].amount, inline: true },
+                { name: 'USPS', value: rates.rates[2].amount, inline: true },
+            )
+            .setTimestamp();
 
-        // loop through the rates and add them to the embed
-        rates.rates.forEach(rate => {
-            embed.addField(rate.provider, rate.amount);
-        }
-
-        console.log(rates);
-
-        // send the embed
+        // send our embed
         await interaction.followUp({ embeds: [embed] });
+
     },
 };
