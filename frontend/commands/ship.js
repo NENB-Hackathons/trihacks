@@ -216,6 +216,7 @@ module.exports = {
                 { name: 'USPS', value: '$' + rates.rates[2].amount, inline: true },
                 { name: 'DHL', value: '$' + rates.rates[3].amount, inline: true },
                 { name: 'Canada Post', value: '$' + rates.rates[4].amount, inline: true },
+                
             )
             .setTimestamp();
 
