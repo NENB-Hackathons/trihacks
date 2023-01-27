@@ -1,21 +1,16 @@
-MIT License
+                   Valorant License Revision 1
+                    (c) NENB-Hackathons, 2023
 
-Copyright (c) 2022 NENC-Hackathons
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, for anyone to use and distribute 
+the compiled binaries, source code, and documentation (the "Software")
+without attribution.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+Permission to modify the Software is only granted to those that have a higher
+competitive matchmaking rank than the copyright holder(s) in VALORANT
+(Riot Games, 2020).
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+The Software is provided in the hope that some will find it useful, but the
+Software comes under NO WARRANTY, EXPRESS OR IMPLIED, and the authors of the
+Software are NOT LIABLE IN THE EVENT OF LOSSES, DAMAGES OR MISUSE relating to
+the Software.
